@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Catalogo di prodotti alimentari italiani autentici: pasta, olio EVO, sughi, dolci e specialità regionali. Scopri la tradizione culinaria italiana.">
+  <meta property="og:title" content="Italian Food Catalog — Authentic Regional Products">
+  <meta property="og:description" content="Esplora la nostra selezione di prodotti italiani autentici, dalle regioni d'Italia alla tua cucina.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556760544-74068565f05c?auto=format&fit=crop&w=1200&h=630&q=80">
+  <meta property="og:url" content="[PLACEHOLDER_CANONICAL_URL]">
+  <link rel="canonical" href="[PLACEHOLDER_CANONICAL_URL]">
+  <title>Italian Food Catalog — Autentica Cucina Italiana</title>
+  <style>
+    /* ---------- DESIGN TOKENS ---------- */
+    :root {
+      --color-ivory: #F8F6F0;
+      --color-forest: #243E32;
+      --color-olive: #75835A;
+      --color-terracotta: #B85C38;
+      --color-charcoal: #252722;
+      --color-white: #FFFFFF;
+      --color-gray-light: #EDEAE3;
+      --color-gray-mid: #C7C2B6;
+      --color-gray-dark: #5A5D55;
+      --font-serif: 'Georgia', 'Times New Roman', 'Times', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 24px;
+      --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.05);
+      --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.07);
+      --transition-standard: 0.25s cubic-bezier(0.2, 0, 0, 1);
+      --max-width: 1280px;
+      --header-height: 72px;
+    }
+
+    /* ---------- RESET & BASE ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-ivory);
+      color: var(--color-charcoal);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    input, select, textarea { font: inherit; }
+    ul, ol { list-style: none; }
+
+    /* ---------- ACCESSIBILITY & FOCUS ---------- */
+    :focus-visible {
+      outline: 3px solid var(--color-terracotta);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ---------- REDUCED MOTION ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ---------- UTILITY ---------- */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--space-md);
+    }
+    .section { padding-block: var(--space-xl); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: var(--color-forest);
+      margin-bottom: var(--space-lg);
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--color-gray-dark);
+      max-width: 700px;
+      margin-top: calc(-1 * var(--space-md));
+      margin-bottom: var(--space-lg);
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: background-color var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard), transform 0.15s ease;
+      text-align: center;
+      white-space: nowrap;
+      border: 2px solid transparent;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background-color: var(--color-forest);
+      color: var(--color-white);
+      border-color: var(--color-forest);
+    }
+    .btn-primary:hover { background-color: #1a2e24; border-color: #1a2e24; }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+    .btn-secondary:hover { background-color: rgba(255,255,255,0.12); }
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-forest);
+      border-color: var(--color-forest);
+    }
+    .btn-outline:hover { background-color: var(--color-forest); color: var(--color-white); }
+    .btn-terracotta {
+      background-color: var(--color-terracotta);
+      color: var(--color-white);
+      border-color: var(--color-terracotta);
+    }
+    .btn-terracotta:hover { background-color: #9e4a2b; border-color: #9e4a2b; }
+    .btn-sm { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+
+    /* ---------- HEADER ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-ivory);
+      border-bottom: 1px solid var(--color-gray-light);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      transition: box-shadow 0.2s ease;
+    }
+    .site-header.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: var(--space-md);
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-forest);
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--color-terracotta); }
+
+    .nav-desktop { display: none; }
+    .nav-desktop ul {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .nav-desktop a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-charcoal);
+      transition: color var(--transition-standard);
+      position: relative;
+      padding-block: 0.25rem;
+    }
+    .nav-desktop a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-terracotta);
+      transition: width var(--transition-standard);
+    }
+    .nav-desktop a:hover::after,
+    .nav-desktop a[aria-current="page"]::after { width: 100%; }
+    .nav-desktop a:hover { color: var(--color-terracotta); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .lang-switcher {
+      display: flex;
+      gap: 2px;
+      background: var(--color-gray-light);
+      border-radius: 30px;
+      padding: 3px;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-gray-dark);
+      transition: all var(--transition-standard);
+    }
+    .lang-btn.active {
+      background: var(--color-white);
+      color: var(--color-forest);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .mobile-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--color-forest);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .mobile-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .mobile-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      inset: var(--header-height) 0 0 0;
+      background: var(--color-ivory);
+      padding: var(--space-lg) var(--space-md);
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 99;
+      overflow-y: auto;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1.25rem;
+      font-family: var(--font-serif);
+      color: var(--color-forest);
+      padding-block: var(--space-xs);
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+    .nav-mobile .btn { margin-top: var(--space-md); width: 100%; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--color-forest);
+      color: var(--color-white);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      opacity: 0.5;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(36,62,50,0.85) 0%, rgba(36,62,50,0.5) 60%, rgba(36,62,50,0.3) 100%);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+      padding-block: var(--space-xl);
+    }
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+    .hero-content p {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: var(--space-lg);
+      max-width: 540px;
+    }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+
+    /* ---------- CATEGORY GRID ---------- */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--space-md);
+    }
+    .category-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      background: var(--color-gray-light);
+      transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+      border: none;
+      text-align: left;
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .category-card:hover img { transform: scale(1.05); }
+    .category-card .cat-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-sm) var(--space-sm) var(--space-md);
+      background: linear-gradient(transparent, rgba(36,62,50,0.85));
+      color: var(--color-white);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* ---------- FILTER BAR ---------- */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      padding: var(--space-md);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+    .filter-bar input,
+    .filter-bar select {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--color-gray-mid);
+      border-radius: 30px;
+      background: var(--color-white);
+      color: var(--color-charcoal);
+      font-size: 0.9rem;
+      min-width: 0;
+      flex: 1 1 160px;
+      transition: border-color var(--transition-standard);
+    }
+    .filter-bar input:focus,
+    .filter-bar select:focus { border-color: var(--color-forest); outline: none; }
+    .filter-bar .btn { flex-shrink: 0; }
+    .filter-bar .filter-count {
+      font-size: 0.85rem;
+      color: var(--color-gray-dark);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ---------- PRODUCT GRID ---------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-md);
+    }
+    .product-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .product-card-image {
+      aspect-ratio: 4 / 3;
+      background: var(--color-gray-light);
+      overflow: hidden;
+    }
+    .product-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-card-image img { transform: scale(1.03); }
+    .product-card-body {
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: var(--space-xs);
+    }
+    .product-card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-terracotta);
+      font-weight: 600;
+    }
+    .product-card-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-forest);
+      line-height: 1.2;
+    }
+    .product-card-region {
+      font-size: 0.85rem;
+      color: var(--color-olive);
+      font-weight: 500;
+    }
+    .product-card-desc {
+      font-size: 0.9rem;
+      color: var(--color-gray-dark);
+      line-height: 1.5;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-card .btn { margin-top: var(--space-xs); align-self: flex-start; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      color: var(--color-gray-dark);
+    }
+    .empty-state p { margin-bottom: var(--space-md); }
+
+    /* ---------- MODAL ---------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--color-ivory);
+      border-radius: var(--radius-lg);
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+      animation: modalIn 0.25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-sm);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      z-index: 10;
+      transition: background var(--transition-standard);
+    }
+    .modal-close:hover { background: var(--color-gray-light); }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+    }
+    .modal-thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .modal-thumb {
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color var(--transition-standard);
+      background: var(--color-gray-light);
+      padding: 0;
+    }
+    .modal-thumb.active { border-color: var(--color-terracotta); }
+    .modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .modal-main-image {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--color-gray-light);
+    }
+    .modal-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.2s ease;
+    }
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: var(--shadow-soft);
+      transition: background var(--transition-standard);
+      z-index: 5;
+    }
+    .gallery-nav:hover { background: var(--color-white); }
+    .gallery-nav.prev { left: var(--space-sm); }
+    .gallery-nav.next { right: var(--space-sm); }
+    .gallery-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .modal-info {
+      padding: 0 var(--space-lg) var(--space-lg);
+    }
+    .modal-info h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--color-forest);
+      margin-bottom: var(--space-xs);
+    }
+    .modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .modal-meta .tag {
+      background: var(--color-gray-light);
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 500;
+      color: var(--color-forest);
+    }
+    .modal-meta .tag.region { background: var(--color-olive); color: var(--color-white); }
+    .modal-info p {
+      color: var(--color-gray-dark);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+    .modal-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--color-forest);
+      margin-bottom: var(--space-xs);
+      margin-top: var(--space-md);
+    }
+    .modal-back-btn { margin-top: var(--space-md); }
+
+    /* ---------- STORY SECTION ---------- */
+    .story-section { background: var(--color-white); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .story-image {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--color-gray-light);
+    }
+    .story-image img { width: 100%; height: 100%; object-fit: cover; }
+    .story-text p {
+      color: var(--color-gray-dark);
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ---------- REGIONS ---------- */
+    .regions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--space-md);
+    }
+    .region-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: transform var(--transition-standard);
+    }
+    .region-card:hover { transform: translateY(-3px); }
+    .region-card .region-name {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--color-forest);
+      font-weight: 500;
+      margin-bottom: var(--space-xs);
+    }
+    .region-card .region-desc {
+      font-size: 0.85rem;
+      color: var(--color-gray-dark);
+      line-height: 1.5;
+    }
+
+    /* ---------- CONTACT & FOOTER ---------- */
+    .contact-section { background: var(--color-white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    .contact-info p {
+      color: var(--color-gray-dark);
+      line-height: 1.8;
+      margin-bottom: var(--space-sm);
+    }
+    .contact-info strong { color: var(--color-forest); }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .contact-form label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-forest);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--color-gray-mid);
+      border-radius: var(--radius-sm);
+      background: var(--color-ivory);
+      transition: border-color var(--transition-standard);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--color-forest); outline: none; }
+    .contact-form .error-msg {
+      font-size: 0.8rem;
+      color: var(--color-terracotta);
+      display: none;
+    }
+    .contact-form .error-msg.visible { display: block; }
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--color-gray-dark);
+      font-style: italic;
+      margin-top: var(--space-xs);
+    }
+
+    .site-footer {
+      background: var(--color-forest);
+      color: rgba(255,255,255,0.8);
+      padding-block: var(--space-xl) var(--space-md);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      color: var(--color-white);
+      font-size: 1.1rem;
+      margin-bottom: var(--space-sm);
+      font-weight: 400;
+    }
+    .footer-col a {
+      display: block;
+      padding-block: 0.25rem;
+      font-size: 0.9rem;
+      transition: color var(--transition-standard);
+    }
+    .footer-col a:hover { color: var(--color-white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-size: 0.85rem;
+    }
+    .footer-bottom a { text-decoration: underline; }
+
+    /* ---------- IMAGE FALLBACK ---------- */
+    .img-fallback {
+      background: var(--color-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gray-dark);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: var(--space-md);
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+    }
+    .img-fallback::after {
+      content: attr(data-fallback-label);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (min-width: 640px) {
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .nav-desktop { display: block; }
+      .mobile-toggle { display: none; }
+      .story-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .category-grid { grid-template-columns: repeat(6, 1fr); }
+      .product-grid { grid-template-columns: repeat(4, 1fr); }
+      .modal-gallery { grid-template-columns: 100px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Italian Food Catalog — Home">
+        Italian<span>Food</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <ul>
+          <li><a href="#" data-i18n="nav_home">Home</a></li>
+          <li><a href="#products" data-i18n="nav_products">Prodotti</a></li>
+          <li><a href="#categories" data-i18n="nav_categories">Categorie</a></li>
+          <li><a href="#story" data-i18n="nav_story">La Nostra Storia</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="it" aria-pressed="true">IT</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <nav class="nav-mobile" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#" data-i18n="nav_home">Home</a>
+      <a href="#products" data-i18n="nav_products">Prodotti</a>
+      <a href="#categories" data-i18n="nav_categories">Categorie</a>
+      <a href="#story" data-i18n="nav_story">La Nostra Storia</a>
+      <a href="#contact" data-i18n="nav_contact">Contatti</a>
+      <a href="#products" class="btn btn-primary" data-i18n="cta_browse">Esplora i Prodotti</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?auto=format&fit=crop&w=1600&q=80"
+             alt="Italian pasta, tomatoes, basil and olive oil on a rustic wooden table"
+             width="1600" height="900" fetchpriority="high" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 data-i18n="hero_title">Sapori Autentici d'Italia</h1>
+        <p data-i18n="hero_subtitle">Dalla pasta artigianale all'olio extravergine, scopri una selezione curata di prodotti che raccontano la tradizione culinaria delle regioni italiane.</p>
+        <div class="hero-cta-group">
+          <a href="#products" class="btn btn-terracotta" data-i18n="hero_cta_primary">Esplora i Prodotti</a>
+          <a href="#story" class="btn btn-secondary" data-i18n="hero_cta_secondary">Scopri la Nostra Storia</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CATEGORIES ========== -->
+    <section class="section container" id="categories" aria-labelledby="categories-title">
+      <h2 class="section-title" id="categories-title" data-i18n="categories_title">Esplora per Categoria</h2>
+      <p class="section-subtitle" data-i18n="categories_subtitle">Dalla pasta ai dolci, ogni categoria racconta una parte della tradizione italiana.</p>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <!-- ========== PRODUCTS ========== -->
+    <section class="section container" id="products" aria-labelledby="products-title">
+      <h2 class="section-title" id="products-title" data-i18n="products_title">Il Nostro Catalogo</h2>
+
+      <div class="filter-bar" role="search" aria-label="Product filters">
+        <label for="searchInput" class="sr-only" data-i18n="filter_search_label">Cerca prodotti</label>
+        <input type="search" id="searchInput" placeholder="Cerca per nome..." data-i18n-placeholder="filter_search_placeholder" autocomplete="off">
+
+        <label for="categoryFilter" class="sr-only" data-i18n="filter_category_label">Filtra per categoria</label>
+        <select id="categoryFilter">
+          <option value="" data-i18n="filter_all_categories">Tutte le categorie</option>
+        </select>
+
+        <label for="regionFilter" class="sr-only" data-i18n="filter_region_label">Filtra per regione</label>
+        <select id="regionFilter">
+          <option value="" data-i18n="filter_all_regions">Tutte le regioni</option>
+        </select>
+
+        <label for="sortSelect" class="sr-only" data-i18n="filter_sort_label">Ordina</label>
+        <select id="sortSelect">
+          <option value="name-asc" data-i18n="sort_name_asc">Nome A–Z</option>
+          <option value="name-desc" data-i18n="sort_name_desc">Nome Z–A</option>
+        </select>
+
+        <button class="btn btn-outline btn-sm" id="clearFilters" data-i18n="filter_clear">Azzera filtri</button>
+        <span class="filter-count" id="filterCount" aria-live="polite"></span>
+      </div>
+
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <p data-i18n="empty_state_message">Nessun prodotto corrisponde ai filtri selezionati.</p>
+        <button class="btn btn-primary" id="emptyResetBtn" data-i18n="empty_state_reset">Azzera filtri</button>
+      </div>
+    </section>
+
+    <!-- ========== STORY ========== -->
+    <section class="section story-section" id="story" aria-labelledby="story-title">
+      <div class="container story-grid">
+        <div class="story-image">
+          <img src="https://images.pexels.com/photos/128421/pexels-photo-128421.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+               alt="Rolling hills of the Italian countryside with olive groves and vineyards"
+               width="800" height="600" loading="lazy">
+        </div>
+        <div class="story-text">
+          <h2 class="section-title" id="story-title" data-i18n="story_title">La Nostra Storia</h2>
+          <p data-i18n="story_p1">[Testo segnaposto — La storia aziendale sarà fornita dal cliente.] Siamo un'azienda dedicata alla valorizzazione dei prodotti alimentari italiani autentici. La nostra selezione nasce dalla passione per la tradizione culinaria regionale e dalla volontà di portare sulle tavole sapori genuini.</p>
+          <p data-i18n="story_p2">[Testo segnaposto — Dettagli su artigianalità e territorio saranno aggiunti.] Ogni prodotto racconta un territorio, una storia e un sapere tramandato. Collaboriamo con produttori locali per offrire una selezione che rispetta la stagionalità e le tecniche tradizionali.</p>
+          <p data-i18n="story_p3">[Testo segnaposto — Eventuali certificazioni saranno specificate solo se verificate.] Il nostro impegno è la qualità, senza compromessi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REGIONS ========== -->
+    <section class="section container" id="regions" aria-labelledby="regions-title">
+      <h2 class="section-title" id="regions-title" data-i18n="regions_title">Tradizioni Regionali</h2>
+      <p class="section-subtitle" data-i18n="regions_subtitle">L'Italia è un mosaico di culture culinarie. Ogni regione ha la sua identità.</p>
+      <div class="regions-grid" id="regionsGrid"></div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title" id="contact-title" data-i18n="contact_title">Contattaci</h2>
+          <p data-i18n="contact_address"><strong>Indirizzo:</strong> [Indirizzo aziendale segnaposto], Italia</p>
+          <p data-i18n="contact_email"><strong>Email:</strong> [email@segnaposto.it]</p>
+          <p data-i18n="contact_phone"><strong>Telefono:</strong> [+39 000 000 0000]</p>
+          <p style="margin-top: var(--space-md); font-size: 0.9rem; color: var(--color-gray-dark);" data-i18n="contact_note">Compila il modulo per richieste informative. Non effettuiamo vendite dirette online.</p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div>
+            <label for="contactName" data-i18n="form_name">Nome</label>
+            <input type="text" id="contactName" name="name" required autocomplete="name">
+            <span class="error-msg" id="nameError" data-i18n="form_name_error">Inserisci il tuo nome.</span>
+          </div>
+          <div>
+            <label for="contactEmail" data-i18n="form_email">Email</label>
+            <input type="email" id="contactEmail" name="email" required autocomplete="email">
+            <span class="error-msg" id="emailError" data-i18n="form_email_error">Inserisci un indirizzo email valido.</span>
+          </div>
+          <div>
+            <label for="contactMessage" data-i18n="form_message">Messaggio</label>
+            <textarea id="contactMessage" name="message" rows="5" required></textarea>
+            <span class="error-msg" id="messageError" data-i18n="form_message_error">Scrivi un messaggio.</span>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="form_submit">Invia Messaggio</button>
+          <p class="form-note" data-i18n="form_note">Nota: questo è un prototipo frontend. L'invio reale richiede un backend o un servizio form approvato.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 data-i18n="footer_brand">Italian Food Catalog</h4>
+          <p style="font-size:0.9rem; line-height:1.6;" data-i18n="footer_tagline">Prodotti italiani autentici, selezionati con cura.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_links">Link Utili</h4>
+          <a href="#" data-i18n="nav_home">Home</a>
+          <a href="#products" data-i18n="nav_products">Prodotti</a>
+          <a href="#categories" data-i18n="nav_categories">Categorie</a>
+          <a href="#story" data-i18n="nav_story">La Nostra Storia</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer_legal">Legale</h4>
+          <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer_cookie">Cookie Policy</a>
+          <a href="#" data-i18n="footer_terms">Termini di Servizio</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer_copyright">© 2026 Italian Food Catalog. Tutti i diritti riservati.</span>
+        <span>
+          <button class="lang-btn" data-lang="it" style="color: inherit; text-decoration: underline;" data-i18n="footer_lang_it">Italiano</button> ·
+          <button class="lang-btn" data-lang="en" style="color: inherit; text-decoration: underline;" data-i18n="footer_lang_en">English</button>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== PRODUCT MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal" id="modalContent">
+      <button class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+      <div class="modal-gallery">
+        <div class="modal-thumbs" id="modalThumbs" role="tablist" aria-label="Product image thumbnails"></div>
+        <div class="modal-main-image">
+          <button class="gallery-nav prev" id="galleryPrev" aria-label="Previous image">‹</button>
+          <img id="modalMainImage" src="" alt="" width="800" height="600">
+          <button class="gallery-nav next" id="galleryNext" aria-label="Next image">›</button>
+        </div>
+      </div>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta">
+          <span class="tag category" id="modalCategory"></span>
+          <span class="tag region" id="modalRegion"></span>
+        </div>
+        <p id="modalDescription"></p>
+        <h3 data-i18n="modal_ingredients">Ingredienti e Usi</h3>
+        <p id="modalIngredients"></p>
+        <button class="btn btn-outline modal-back-btn" id="modalBackBtn" data-i18n="modal_back">← Torna al catalogo</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      /* ============================================================
+         1. PRODUCT DATA MODEL (real Italian food photography)
+         ============================================================ */
+      const products = [
+        {
+          id: 'pasta-spaghetti',
+          slug: 'spaghetti-artigianali',
+          category: 'pasta',
+          region: 'Campania',
+          name: { it: 'Spaghetti Artigianali', en: 'Artisan Spaghetti' },
+          description: {
+            it: 'Pasta di semola di grano duro trafilata al bronzo, con una consistenza ruvida che trattiene perfettamente ogni sugo.',
+            en: 'Bronze-cut durum wheat semolina pasta with a rough texture that perfectly holds every sauce.'
+          },
+          ingredients: {
+            it: 'Semola di grano duro, acqua. Può contenere glutine. Usi: ideale con sughi di pomodoro, pesto o olio EVO.',
+            en: 'Durum wheat semolina, water. May contain gluten. Uses: ideal with tomato sauces, pesto, or EVOO.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287527/pexels-photo-6287527.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Spaghetti artigianali trafilati al bronzo',
+            en: 'Artisan bronze-cut spaghetti'
+          }
+        },
+        {
+          id: 'olio-evo-puglia',
+          slug: 'olio-evo-puglia',
+          category: 'olio',
+          region: 'Puglia',
+          name: { it: 'Olio Extravergine d\'Oliva', en: 'Extra Virgin Olive Oil' },
+          description: {
+            it: 'Olio EVO dal gusto fruttato medio, con note di mandorla e carciofo. Perfetto a crudo e per condire.',
+            en: 'Medium-fruity EVOO with notes of almond and artichoke. Perfect raw and for dressing.'
+          },
+          ingredients: {
+            it: '100% olio extravergine di oliva. Usi: condimento a crudo, bruschette, insalate, verdure grigliate.',
+            en: '100% extra virgin olive oil. Uses: raw dressing, bruschetta, salads, grilled vegetables.'
+          },
+          images: [
+            'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1267623/pexels-photo-1267623.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/7245452/pexels-photo-7245452.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Bottiglia di olio extravergine d\'oliva pugliese',
+            en: 'Bottle of Apulian extra virgin olive oil'
+          }
+        },
+        {
+          id: 'sugo-pomodoro-toscana',
+          slug: 'sugo-pomodoro-toscana',
+          category: 'sughi',
+          region: 'Toscana',
+          name: { it: 'Sugo di Pomodoro Toscano', en: 'Tuscan Tomato Sauce' },
+          description: {
+            it: 'Sugo pronto a base di pomodori maturi, basilico fresco e un filo d\'olio EVO. Gusto autentico e genuino.',
+            en: 'Ready-made sauce with ripe tomatoes, fresh basil, and a drizzle of EVOO. Authentic, genuine taste.'
+          },
+          ingredients: {
+            it: 'Pomodori, olio EVO, basilico, sale. Usi: condimento per pasta, base per pizza, accompagnamento per secondi.',
+            en: 'Tomatoes, EVOO, basil, salt. Uses: pasta sauce, pizza base, side for main courses.'
+          },
+          images: [
+            'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1398890/pexels-photo-1398890.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287295/pexels-photo-6287295.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Vasetto di sugo di pomodoro toscano',
+            en: 'Jar of Tuscan tomato sauce'
+          }
+        },
+        {
+          id: 'dolce-tiramisu',
+          slug: 'tiramisu-artigianale',
+          category: 'dolci',
+          region: 'Veneto',
+          name: { it: 'Tiramisù Artigianale', en: 'Artisan Tiramisu' },
+          description: {
+            it: 'Dolce al cucchiaio con savoiardi, caffè, mascarpone e cacao. Un classico della tradizione veneta.',
+            en: 'Spoon dessert with ladyfingers, coffee, mascarpone, and cocoa. A classic of Venetian tradition.'
+          },
+          ingredients: {
+            it: 'Savoiardi, mascarpone, uova, caffè, cacao, zucchero. Contiene glutine, uova, latte.',
+            en: 'Ladyfingers, mascarpone, eggs, coffee, cocoa, sugar. Contains gluten, eggs, milk.'
+          },
+          images: [
+            'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6880219/pexels-photo-6880219.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/4913332/pexels-photo-4913332.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Tiramisù artigianale con cacao',
+            en: 'Artisan tiramisu with cocoa'
+          }
+        },
+        {
+          id: 'antipasto-olive-ascolane',
+          slug: 'olive-ascolane',
+          category: 'antipasti',
+          region: 'Marche',
+          name: { it: 'Olive Ascolane', en: 'Ascolane Olives' },
+          description: {
+            it: 'Olive verdi ripiene di carne, impanate e fritte. Specialità marchigiana dal cuore morbido.',
+            en: 'Green olives stuffed with meat, breaded and fried. A Marche specialty with a soft heart.'
+          },
+          ingredients: {
+            it: 'Olive verdi, carne bovina, pane, uova, farina. Contiene glutine, uova.',
+            en: 'Green olives, beef, bread, eggs, flour. Contains gluten, eggs.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/4109947/pexels-photo-4109947.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/5946636/pexels-photo-5946636.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Olive ascolane fritte',
+            en: 'Fried Ascolane olives'
+          }
+        },
+        {
+          id: 'specialita-pesto-genovese',
+          slug: 'pesto-genovese',
+          category: 'specialita',
+          region: 'Liguria',
+          name: { it: 'Pesto Genovese', en: 'Genoese Pesto' },
+          description: {
+            it: 'Pesto alla genovese con basilico DOP, pinoli, aglio e formaggio. Un concentrato di profumo ligure.',
+            en: 'Genoese pesto with DOP basil, pine nuts, garlic, and cheese. A concentration of Ligurian fragrance.'
+          },
+          ingredients: {
+            it: 'Basilico, olio EVO, pinoli, aglio, formaggio, sale. Usi: condimento per pasta, minestrone, bruschette.',
+            en: 'Basil, EVOO, pine nuts, garlic, cheese, salt. Uses: pasta dressing, minestrone, bruschetta.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/4198027/pexels-photo-4198027.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287533/pexels-photo-6287533.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Vasetto di pesto genovese',
+            en: 'Jar of Genoese pesto'
+          }
+        },
+        {
+          id: 'pasta-rigatoni',
+          slug: 'rigatoni-artigianali',
+          category: 'pasta',
+          region: 'Lazio',
+          name: { it: 'Rigatoni Artigianali', en: 'Artisan Rigatoni' },
+          description: {
+            it: 'Rigatoni di grano duro con superficie rigata, ideali per sughi corposi e cotture al forno.',
+            en: 'Durum wheat rigatoni with a ridged surface, ideal for hearty sauces and baked dishes.'
+          },
+          ingredients: {
+            it: 'Semola di grano duro, acqua. Può contenere glutine.',
+            en: 'Durum wheat semolina, water. May contain gluten.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287527/pexels-photo-6287527.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Rigatoni artigianali',
+            en: 'Artisan rigatoni'
+          }
+        },
+        {
+          id: 'olio-evo-toscana',
+          slug: 'olio-evo-toscano',
+          category: 'olio',
+          region: 'Toscana',
+          name: { it: 'Olio EVO Toscano', en: 'Tuscan EVOO' },
+          description: {
+            it: 'Olio extravergine dal sapore intenso e leggermente piccante, con retrogusto di carciofo.',
+            en: 'Extra virgin olive oil with an intense, slightly spicy flavor and an artichoke aftertaste.'
+          },
+          ingredients: {
+            it: '100% olio extravergine di oliva. Usi: condimento a crudo, zuppe, legumi.',
+            en: '100% extra virgin olive oil. Uses: raw dressing, soups, legumes.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1267623/pexels-photo-1267623.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/7245452/pexels-photo-7245452.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Bottiglia di olio EVO toscano',
+            en: 'Bottle of Tuscan EVOO'
+          }
+        },
+        {
+          id: 'sugo-ragu-bolognese',
+          slug: 'ragu-bolognese',
+          category: 'sughi',
+          region: 'Emilia-Romagna',
+          name: { it: 'Ragù alla Bolognese', en: 'Bolognese Ragù' },
+          description: {
+            it: 'Ragù di carne cotto lentamente secondo la tradizione emiliana. Ricco e avvolgente.',
+            en: 'Slow-cooked meat ragù according to Emilian tradition. Rich and enveloping.'
+          },
+          ingredients: {
+            it: 'Carne bovina, pomodoro, cipolla, carota, sedano, olio EVO, vino. Usi: condimento per tagliatelle, lasagne.',
+            en: 'Beef, tomato, onion, carrot, celery, EVOO, wine. Uses: tagliatelle, lasagna.'
+          },
+          images: [
+            'https://images.pexels.com/photos/1398890/pexels-photo-1398890.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287295/pexels-photo-6287295.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Ragù alla bolognese',
+            en: 'Bolognese ragù'
+          }
+        },
+        {
+          id: 'dolce-cannoli-siciliani',
+          slug: 'cannoli-siciliani',
+          category: 'dolci',
+          region: 'Sicilia',
+          name: { it: 'Cannoli Siciliani', en: 'Sicilian Cannoli' },
+          description: {
+            it: 'Cialde croccanti riempite con ricotta di pecora dolce. Un simbolo della pasticceria siciliana.',
+            en: 'Crispy shells filled with sweet sheep ricotta. A symbol of Sicilian pastry.'
+          },
+          ingredients: {
+            it: 'Farina, ricotta di pecora, zucchero, cannella. Contiene glutine, latte.',
+            en: 'Flour, sheep ricotta, sugar, cinnamon. Contains gluten, milk.'
+          },
+          images: [
+            'https://images.pexels.com/photos/6880219/pexels-photo-6880219.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/4913332/pexels-photo-4913332.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Cannoli siciliani alla ricotta',
+            en: 'Sicilian ricotta cannoli'
+          }
+        },
+        {
+          id: 'antipasto-bruschette',
+          slug: 'bruschette-artigianali',
+          category: 'antipasti',
+          region: 'Toscana',
+          name: { it: 'Bruschette Artigianali', en: 'Artisan Bruschetta' },
+          description: {
+            it: 'Fette di pane croccante condite con pomodoro fresco, basilico e olio EVO. Un antipasto semplice e gustoso.',
+            en: 'Slices of crispy bread topped with fresh tomato, basil, and EVOO. A simple, tasty appetizer.'
+          },
+          ingredients: {
+            it: 'Pane, pomodoro, basilico, olio EVO, aglio. Contiene glutine.',
+            en: 'Bread, tomato, basil, EVOO, garlic. Contains gluten.'
+          },
+          images: [
+            'https://images.pexels.com/photos/4109947/pexels-photo-4109947.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/5946636/pexels-photo-5946636.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Bruschette con pomodoro e basilico',
+            en: 'Bruschetta with tomato and basil'
+          }
+        },
+        {
+          id: 'specialita-aceto-balsamico',
+          slug: 'aceto-balsamico',
+          category: 'specialita',
+          region: 'Emilia-Romagna',
+          name: { it: 'Aceto Balsamico', en: 'Balsamic Vinegar' },
+          description: {
+            it: 'Aceto balsamico invecchiato in botti di legno. Densità e dolcezza naturale per insalate e formaggi.',
+            en: 'Balsamic vinegar aged in wooden barrels. Density and natural sweetness for salads and cheeses.'
+          },
+          ingredients: {
+            it: 'Mosto d\'uva, aceto di vino. Usi: condimento per insalate, formaggi, carni.',
+            en: 'Grape must, wine vinegar. Uses: dressing for salads, cheeses, meats.'
+          },
+          images: [
+            'https://images.pexels.com/photos/4198027/pexels-photo-4198027.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+            'https://images.pexels.com/photos/6287533/pexels-photo-6287533.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+          ],
+          altText: {
+            it: 'Bottiglia di aceto balsamico',
+            en: 'Bottle of balsamic vinegar'
+          }
+        }
+      ];
+
+      /* ============================================================
+         2. TRANSLATIONS DICTIONARY
+         ============================================================ */
+      const translations = {
+        it: {
+          nav_home: 'Home', nav_products: 'Prodotti', nav_categories: 'Categorie',
+          nav_story: 'La Nostra Storia', nav_contact: 'Contatti', cta_browse: 'Esplora i Prodotti',
+          hero_title: 'Sapori Autentici d\'Italia',
+          hero_subtitle: 'Dalla pasta artigianale all\'olio extravergine, scopri una selezione curata di prodotti che raccontano la tradizione culinaria delle regioni italiane.',
+          hero_cta_primary: 'Esplora i Prodotti', hero_cta_secondary: 'Scopri la Nostra Storia',
+          categories_title: 'Esplora per Categoria',
+          categories_subtitle: 'Dalla pasta ai dolci, ogni categoria racconta una parte della tradizione italiana.',
+          products_title: 'Il Nostro Catalogo',
+          filter_search_label: 'Cerca prodotti', filter_search_placeholder: 'Cerca per nome...',
+          filter_category_label: 'Filtra per categoria', filter_all_categories: 'Tutte le categorie',
+          filter_region_label: 'Filtra per regione', filter_all_regions: 'Tutte le regioni',
+          filter_sort_label: 'Ordina', sort_name_asc: 'Nome A–Z', sort_name_desc: 'Nome Z–A',
+          filter_clear: 'Azzera filtri', filter_count: '{count} prodotti',
+          empty_state_message: 'Nessun prodotto corrisponde ai filtri selezionati.',
+          empty_state_reset: 'Azzera filtri',
+          story_title: 'La Nostra Storia',
+          story_p1: '[Testo segnaposto — La storia aziendale sarà fornita dal cliente.] Siamo un\'azienda dedicata alla valorizzazione dei prodotti alimentari italiani autentici. La nostra selezione nasce dalla passione per la tradizione culinaria regionale e dalla volontà di portare sulle tavole sapori genuini.',
+          story_p2: '[Testo segnaposto — Dettagli su artigianalità e territorio saranno aggiunti.] Ogni prodotto racconta un territorio, una storia e un sapere tramandato. Collaboriamo con produttori locali per offrire una selezione che rispetta la stagionalità e le tecniche tradizionali.',
+          story_p3: '[Testo segnaposto — Eventuali certificazioni saranno specificate solo se verificate.] Il nostro impegno è la qualità, senza compromessi.',
+          regions_title: 'Tradizioni Regionali',
+          regions_subtitle: 'L\'Italia è un mosaico di culture culinarie. Ogni regione ha la sua identità.',
+          contact_title: 'Contattaci',
+          contact_address: '<strong>Indirizzo:</strong> [Indirizzo aziendale segnaposto], Italia',
+          contact_email: '<strong>Email:</strong> [email@segnaposto.it]',
+          contact_phone: '<strong>Telefono:</strong> [+39 000 000 0000]',
+          contact_note: 'Compila il modulo per richieste informative. Non effettuiamo vendite dirette online.',
+          form_name: 'Nome', form_name_error: 'Inserisci il tuo nome.',
+          form_email: 'Email', form_email_error: 'Inserisci un indirizzo email valido.',
+          form_message: 'Messaggio', form_message_error: 'Scrivi un messaggio.',
+          form_submit: 'Invia Messaggio',
+          form_note: 'Nota: questo è un prototipo frontend. L\'invio reale richiede un backend o un servizio form approvato.',
+          modal_ingredients: 'Ingredienti e Usi', modal_back: '← Torna al catalogo',
+          footer_brand: 'Italian Food Catalog', footer_tagline: 'Prodotti italiani autentici, selezionati con cura.',
+          footer_links: 'Link Utili', footer_legal: 'Legale',
+          footer_privacy: 'Privacy Policy', footer_cookie: 'Cookie Policy', footer_terms: 'Termini di Servizio',
+          footer_copyright: '© 2025 Italian Food Catalog. Tutti i diritti riservati.',
+          footer_lang_it: 'Italiano', footer_lang_en: 'English',
+          category_pasta: 'Pasta', category_olio: 'Olio', category_sughi: 'Sughi',
+          category_dolci: 'Dolci', category_antipasti: 'Antipasti', category_specialita: 'Specialità',
+          view_details: 'Vedi Dettagli'
+        },
+        en: {
+          nav_home: 'Home', nav_products: 'Products', nav_categories: 'Categories',
+          nav_story: 'Our Story', nav_contact: 'Contact', cta_browse: 'Browse Products',
+          hero_title: 'Authentic Flavors of Italy',
+          hero_subtitle: 'From artisan pasta to extra virgin olive oil, discover a curated selection of products that tell the culinary tradition of Italian regions.',
+          hero_cta_primary: 'Explore Products', hero_cta_secondary: 'Discover Our Story',
+          categories_title: 'Explore by Category',
+          categories_subtitle: 'From pasta to desserts, each category tells a part of Italian tradition.',
+          products_title: 'Our Catalog',
+          filter_search_label: 'Search products', filter_search_placeholder: 'Search by name...',
+          filter_category_label: 'Filter by category', filter_all_categories: 'All categories',
+          filter_region_label: 'Filter by region', filter_all_regions: 'All regions',
+          filter_sort_label: 'Sort', sort_name_asc: 'Name A–Z', sort_name_desc: 'Name Z–A',
+          filter_clear: 'Clear filters', filter_count: '{count} products',
+          empty_state_message: 'No products match the selected filters.',
+          empty_state_reset: 'Clear filters',
+          story_title: 'Our Story',
+          story_p1: '[Placeholder text — Company history will be provided by the client.] We are a company dedicated to enhancing authentic Italian food products. Our selection stems from a passion for regional culinary tradition and the desire to bring genuine flavors to the table.',
+          story_p2: '[Placeholder text — Details on craftsmanship and territory will be added.] Each product tells of a territory, a story, and handed-down knowledge. We collaborate with local producers to offer a selection that respects seasonality and traditional techniques.',
+          story_p3: '[Placeholder text — Any certifications will be specified only if verified.] Our commitment is quality, without compromise.',
+          regions_title: 'Regional Traditions',
+          regions_subtitle: 'Italy is a mosaic of culinary cultures. Each region has its own identity.',
+          contact_title: 'Contact Us',
+          contact_address: '<strong>Address:</strong> [Placeholder company address], Italy',
+          contact_email: '<strong>Email:</strong> [placeholder@email.it]',
+          contact_phone: '<strong>Phone:</strong> [+39 000 000 0000]',
+          contact_note: 'Fill out the form for informational inquiries. We do not make direct online sales.',
+          form_name: 'Name', form_name_error: 'Please enter your name.',
+          form_email: 'Email', form_email_error: 'Please enter a valid email address.',
+          form_message: 'Message', form_message_error: 'Please write a message.',
+          form_submit: 'Send Message',
+          form_note: 'Note: this is a frontend prototype. Real delivery requires a backend or an approved form service.',
+          modal_ingredients: 'Ingredients & Uses', modal_back: '← Back to catalog',
+          footer_brand: 'Italian Food Catalog', footer_tagline: 'Authentic Italian products, carefully selected.',
+          footer_links: 'Useful Links', footer_legal: 'Legal',
+          footer_privacy: 'Privacy Policy', footer_cookie: 'Cookie Policy', footer_terms: 'Terms of Service',
+          footer_copyright: '© 2025 Italian Food Catalog. All rights reserved.',
+          footer_lang_it: 'Italiano', footer_lang_en: 'English',
+          category_pasta: 'Pasta', category_olio: 'Olive Oil', category_sughi: 'Sauces',
+          category_dolci: 'Sweets & Desserts', category_antipasti: 'Antipasti', category_specialita: 'Specialties',
+          view_details: 'View Details'
+        }
+      };
+
+      /* ============================================================
+         3. CATEGORY & REGION DATA (real photography)
+         ============================================================ */
+      const categories = [
+        { id: 'pasta', labelKey: 'category_pasta',
+          image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' },
+        { id: 'olio', labelKey: 'category_olio',
+          image: 'https://images.pexels.com/photos/33783/olive-oil-salad-dressing-cooking-olive.jpg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' },
+        { id: 'sughi', labelKey: 'category_sughi',
+          image: 'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' },
+        { id: 'dolci', labelKey: 'category_dolci',
+          image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' },
+        { id: 'antipasti', labelKey: 'category_antipasti',
+          image: 'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' },
+        { id: 'specialita', labelKey: 'category_specialita',
+          image: 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop' }
+      ];
+
+      const regions = [
+        { name: 'Emilia-Romagna', desc: { it: 'Terra di ragù, tagliatelle e aceto balsamico.', en: 'Land of ragù, tagliatelle, and balsamic vinegar.' } },
+        { name: 'Puglia', desc: { it: 'Olio EVO, grano duro e tradizioni contadine.', en: 'EVOO, durum wheat, and farming traditions.' } },
+        { name: 'Toscana', desc: { it: 'Olio, pane, pomodoro e sapori semplici.', en: 'Oil, bread, tomato, and simple flavors.' } },
+        { name: 'Campania', desc: { it: 'Pasta, pomodoro e mozzarella di bufala.', en: 'Pasta, tomato, and buffalo mozzarella.' } },
+        { name: 'Sicilia', desc: { it: 'Dolci, agrumi e influenze mediterranee.', en: 'Desserts, citrus, and Mediterranean influences.' } },
+        { name: 'Liguria', desc: { it: 'Pesto, basilico e olio delicato.', en: 'Pesto, basil, and delicate oil.' } }
+      ];
+
+      /* ============================================================
+         4. STATE
+         ============================================================ */
+      let currentLang = 'it';
+      let currentFilters = { search: '', category: '', region: '', sort: 'name-asc' };
+      let modalProduct = null;
+      let modalImageIndex = 0;
+
+      /* ============================================================
+         5. DOM REFERENCES
+         ============================================================ */
+      const $ = (sel) => document.querySelector(sel);
+
+      const header = $('#siteHeader');
+      const mobileToggle = $('.mobile-toggle');
+      const mobileNav = $('#mobileNav');
+      const categoryGrid = $('#categoryGrid');
+      const productGrid = $('#productGrid');
+      const emptyState = $('#emptyState');
+      const filterCount = $('#filterCount');
+      const searchInput = $('#searchInput');
+      const categoryFilter = $('#categoryFilter');
+      const regionFilter = $('#regionFilter');
+      const sortSelect = $('#sortSelect');
+      const clearFiltersBtn = $('#clearFilters');
+      const emptyResetBtn = $('#emptyResetBtn');
+      const regionsGrid = $('#regionsGrid');
+
+      const modalOverlay = $('#modalOverlay');
+      const modalClose = $('#modalClose');
+      const modalTitle = $('#modalTitle');
+      const modalCategory = $('#modalCategory');
+      const modalRegion = $('#modalRegion');
+      const modalDescription = $('#modalDescription');
+      const modalIngredients = $('#modalIngredients');
+      const modalMainImage = $('#modalMainImage');
+      const modalThumbs = $('#modalThumbs');
+      const galleryPrev = $('#galleryPrev');
+      const galleryNext = $('#galleryNext');
+      const modalBackBtn = $('#modalBackBtn');
+
+      const contactForm = $('#contactForm');
+
+      /* ============================================================
+         6. UTILITY FUNCTIONS
+         ============================================================ */
+      function t(key, replacements) {
+        let str = translations[currentLang][key] || key;
+        if (replacements) {
+          Object.keys(replacements).forEach(k => {
+            str = str.replace(`{${k}}`, replacements[k]);
+          });
+        }
+        return str;
+      }
+
+      function getCategoryLabel(catId) {
+        const cat = categories.find(c => c.id === catId);
+        return cat ? t(cat.labelKey) : catId;
+      }
+
+      function getProductName(product) {
+        return product.name[currentLang] || product.name.it;
+      }
+      function getProductDescription(product) {
+        return product.description[currentLang] || product.description.it;
+      }
+      function getProductIngredients(product) {
+        return product.ingredients[currentLang] || product.ingredients.it;
+      }
+      function getProductAlt(product, imgIndex) {
+        const base = product.altText[currentLang] || product.altText.it;
+        return imgIndex !== undefined ? `${base} — ${imgIndex + 1}` : base;
+      }
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      /* Fallback helper: apply to any <img> that may fail */
+      function attachImageFallback(img, label) {
+        img.addEventListener('error', function handleError() {
+          img.removeEventListener('error', handleError);
+          const parent = img.parentElement;
+          if (!parent) return;
+          parent.classList.add('img-fallback');
+          parent.setAttribute('data-fallback-label', label || 'Image unavailable');
+          img.style.display = 'none';
+        });
+      }
+
+      /* ============================================================
+         7. RENDER CATEGORIES
+         ============================================================ */
+      function renderCategories() {
+        categoryGrid.innerHTML = categories.map(cat => `
+          <button class="category-card" data-category="${cat.id}" aria-label="${getCategoryLabel(cat.id)}">
+            <img src="${cat.image}" alt="${getCategoryLabel(cat.id)}" width="400" height="400" loading="lazy">
+            <span class="cat-label">${getCategoryLabel(cat.id)}</span>
+          </button>
+        `).join('');
+
+        categoryGrid.querySelectorAll('.category-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const catId = card.dataset.category;
+            categoryFilter.value = catId;
+            currentFilters.category = catId;
+            applyFilters();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+
+        // Attach fallback to category images
+        categoryGrid.querySelectorAll('img').forEach(img => {
+          attachImageFallback(img, img.alt);
+        });
+      }
+
+      /* ============================================================
+         8. RENDER REGIONS
+         ============================================================ */
+      function renderRegions() {
+        regionsGrid.innerHTML = regions.map(r => `
+          <div class="region-card">
+            <div class="region-name">${escapeHtml(r.name)}</div>
+            <div class="region-desc">${escapeHtml(r.desc[currentLang] || r.desc.it)}</div>
+          </div>
+        `).join('');
+      }
+
+      /* ============================================================
+         9. POPULATE FILTERS
+         ============================================================ */
+      function populateFilters() {
+        categoryFilter.innerHTML = `<option value="">${t('filter_all_categories')}</option>` +
+          categories.map(c => `<option value="${c.id}">${getCategoryLabel(c.id)}</option>`).join('');
+
+        const regionNames = [...new Set(products.map(p => p.region))].sort();
+        regionFilter.innerHTML = `<option value="">${t('filter_all_regions')}</option>` +
+          regionNames.map(r => `<option value="${r}">${r}</option>`).join('');
+      }
+
+      /* ============================================================
+         10. FILTER & RENDER PRODUCTS
+         ============================================================ */
+      function getFilteredProducts() {
+        let filtered = products.filter(p => {
+          const name = getProductName(p).toLowerCase();
+          const desc = getProductDescription(p).toLowerCase();
+          const search = currentFilters.search.toLowerCase();
+          const matchSearch = !search || name.includes(search) || desc.includes(search);
+          const matchCategory = !currentFilters.category || p.category === currentFilters.category;
+          const matchRegion = !currentFilters.region || p.region === currentFilters.region;
+          return matchSearch && matchCategory && matchRegion;
+        });
+
+        filtered.sort((a, b) => {
+          const nameA = getProductName(a).toLowerCase();
+          const nameB = getProductName(b).toLowerCase();
+          if (currentFilters.sort === 'name-desc') return nameB.localeCompare(nameA);
+          return nameA.localeCompare(nameB);
+        });
+
+        return filtered;
+      }
+
+      function renderProducts() {
+        const filtered = getFilteredProducts();
+        filterCount.textContent = t('filter_count', { count: filtered.length });
+
+        if (filtered.length === 0) {
+          productGrid.innerHTML = '';
+          emptyState.style.display = 'block';
+          return;
+        }
+
+        emptyState.style.display = 'none';
+
+        productGrid.innerHTML = filtered.map(p => `
+          <article class="product-card" data-product-id="${p.id}">
+            <div class="product-card-image">
+              <img src="${p.images[0]}" alt="${getProductAlt(p, 0)}" width="400" height="300" loading="lazy">
+            </div>
+            <div class="product-card-body">
+              <span class="product-card-category">${getCategoryLabel(p.category)}</span>
+              <h3 class="product-card-name">${escapeHtml(getProductName(p))}</h3>
+              <span class="product-card-region">${escapeHtml(p.region)}</span>
+              <p class="product-card-desc">${escapeHtml(getProductDescription(p))}</p>
+              <button class="btn btn-outline btn-sm view-details-btn" data-product-id="${p.id}">
+                ${t('view_details')}
+              </button>
+            </div>
+          </article>
+        `).join('');
+
+        productGrid.querySelectorAll('.view-details-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openModal(btn.dataset.productId);
+          });
+        });
+
+        productGrid.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('.view-details-btn')) return;
+            openModal(card.dataset.productId);
+          });
+        });
+
+        // Attach fallback to product images
+        productGrid.querySelectorAll('.product-card-image img').forEach((img, i) => {
+          const card = img.closest('.product-card');
+          const product = products.find(p => p.id === card.dataset.productId);
+          attachImageFallback(img, product ? getProductName(product) : img.alt);
+        });
+      }
+
+      function applyFilters() {
+        currentFilters.search = searchInput.value.trim();
+        currentFilters.category = categoryFilter.value;
+        currentFilters.region = regionFilter.value;
+        currentFilters.sort = sortSelect.value;
+        renderProducts();
+      }
+
+      function resetFilters() {
+        searchInput.value = '';
+        categoryFilter.value = '';
+        regionFilter.value = '';
+        sortSelect.value = 'name-asc';
+        currentFilters = { search: '', category: '', region: '', sort: 'name-asc' };
+        renderProducts();
+      }
+
+      /* ============================================================
+         11. MODAL / PRODUCT DETAIL
+         ============================================================ */
+      function openModal(productId) {
+        modalProduct = products.find(p => p.id === productId);
+        if (!modalProduct) return;
+
+        modalImageIndex = 0;
+        updateModalContent();
+        modalOverlay.hidden = false;
+        modalOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalClose.focus();
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove('open');
+        modalOverlay.hidden = true;
+        document.body.style.overflow = '';
+        modalProduct = null;
+        modalImageIndex = 0;
+      }
+
+      function updateModalContent() {
+        if (!modalProduct) return;
+        const p = modalProduct;
+
+        modalTitle.textContent = getProductName(p);
+        modalCategory.textContent = getCategoryLabel(p.category);
+        modalRegion.textContent = p.region;
+        modalDescription.textContent = getProductDescription(p);
+        modalIngredients.textContent = getProductIngredients(p);
+
+        modalMainImage.src = p.images[modalImageIndex];
+        modalMainImage.alt = getProductAlt(p, modalImageIndex);
+
+        modalThumbs.innerHTML = p.images.map((img, i) => `
+          <button class="modal-thumb ${i === modalImageIndex ? 'active' : ''}"
+                  role="tab" aria-selected="${i === modalImageIndex}"
+                  aria-label="Image ${i + 1}" data-index="${i}">
+            <img src="${img}" alt="${getProductAlt(p, i)}" width="80" height="80" loading="lazy">
+          </button>
+        `).join('');
+
+        modalThumbs.querySelectorAll('.modal-thumb').forEach(thumb => {
+          thumb.addEventListener('click', () => {
+            modalImageIndex = parseInt(thumb.dataset.index, 10);
+            updateModalContent();
+          });
+        });
+
+        // Fallbacks in modal
+        attachImageFallback(modalMainImage, getProductName(p));
+        modalThumbs.querySelectorAll('.modal-thumb img').forEach((img, i) => {
+          attachImageFallback(img, getProductAlt(p, i));
+        });
+
+        galleryPrev.disabled = modalImageIndex === 0;
+        galleryNext.disabled = modalImageIndex === p.images.length - 1;
+      }
+
+      function navigateGallery(direction) {
+        if (!modalProduct) return;
+        const newIndex = modalImageIndex + direction;
+        if (newIndex < 0 || newIndex >= modalProduct.images.length) return;
+        modalImageIndex = newIndex;
+        updateModalContent();
+      }
+
+      /* ============================================================
+         12. LANGUAGE SWITCHING
+         ============================================================ */
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          const translated = t(key);
+          if (translated) el.innerHTML = translated;
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.dataset.i18nPlaceholder;
+          el.placeholder = t(key);
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          const isActive = btn.dataset.lang === lang;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive);
+        });
+
+        renderCategories();
+        renderRegions();
+        populateFilters();
+        applyFilters();
+
+        if (modalProduct) updateModalContent();
+
+        try { localStorage.setItem('preferredLang', lang); } catch (e) {}
+      }
+
+      /* ============================================================
+         13. CONTACT FORM VALIDATION
+         ============================================================ */
+      function validateContactForm(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name = $('#contactName');
+        const email = $('#contactEmail');
+        const message = $('#contactMessage');
+        const nameError = $('#nameError');
+        const emailError = $('#emailError');
+        const messageError = $('#messageError');
+
+        if (!name.value.trim()) {
+          nameError.classList.add('visible');
+          name.style.borderColor = '#B85C38';
+          valid = false;
+        } else {
+          nameError.classList.remove('visible');
+          name.style.borderColor = '';
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+          emailError.classList.add('visible');
+          email.style.borderColor = '#B85C38';
+          valid = false;
+        } else {
+          emailError.classList.remove('visible');
+          email.style.borderColor = '';
+        }
+
+        if (!message.value.trim()) {
+          messageError.classList.add('visible');
+          message.style.borderColor = '#B85C38';
+          valid = false;
+        } else {
+          messageError.classList.remove('visible');
+          message.style.borderColor = '';
+        }
+
+        if (valid) {
+          alert(currentLang === 'it'
+            ? 'Messaggio inviato! (Simulazione frontend — nessun invio reale.)'
+            : 'Message sent! (Frontend simulation — no real delivery.)');
+          contactForm.reset();
+        }
+      }
+
+      /* ============================================================
+         14. MOBILE NAV & SCROLL
+         ============================================================ */
+      function toggleMobileNav() {
+        const isOpen = mobileNav.classList.toggle('open');
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        mobileToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      }
+
+      function closeMobileNav() {
+        mobileNav.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.setAttribute('aria-label', 'Open menu');
+      }
+
+      function handleScroll() {
+        if (window.scrollY > 20) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      }
+
+      /* ============================================================
+         16. INIT
+         ============================================================ */
+      function init() {
+        try {
+          const saved = localStorage.getItem('preferredLang');
+          if (saved && (saved === 'it' || saved === 'en')) currentLang = saved;
+        } catch (e) {}
+
+        renderCategories();
+        renderRegions();
+        populateFilters();
+        renderProducts();
+        setLanguage(currentLang);
+
+        searchInput.addEventListener('input', applyFilters);
+        categoryFilter.addEventListener('change', applyFilters);
+        regionFilter.addEventListener('change', applyFilters);
+        sortSelect.addEventListener('change', applyFilters);
+        clearFiltersBtn.addEventListener('click', resetFilters);
+        emptyResetBtn.addEventListener('click', resetFilters);
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+          if (e.target === modalOverlay) closeModal();
+        });
+        modalBackBtn.addEventListener('click', closeModal);
+        galleryPrev.addEventListener('click', () => navigateGallery(-1));
+        galleryNext.addEventListener('click', () => navigateGallery(1));
+
+        document.addEventListener('keydown', (e) => {
+          if (modalOverlay.classList.contains('open')) {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') navigateGallery(-1);
+            if (e.key === 'ArrowRight') navigateGallery(1);
+          }
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        mobileToggle.addEventListener('click', toggleMobileNav);
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMobileNav);
+        });
+
+        contactForm.addEventListener('submit', validateContactForm);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        // Hero image fallback
+        const heroImg = document.querySelector('.hero-bg img');
+        if (heroImg) attachImageFallback(heroImg, 'Italian food hero image');
+
+        // Story image fallback
+        const storyImg = document.querySelector('.story-image img');
+        if (storyImg) attachImageFallback(storyImg, 'Italian countryside');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
